@@ -4,10 +4,17 @@
 	"description": "A n8n node for Hype API",
 	"keywords": [
 		"n8n-community-node-package",
+		"n8n",
 		"hype",
 		"youtube",
-		"trends",
-		"gaming"
+		"youtube trends",
+		"trending topics",
+		"top 10",
+		"gaming",
+		"gaming trends",
+		"content ideas",
+		"video trends",
+		"trend research"
 	],
 	"license": "MIT",
 	"homepage": "https://hype.ad",
