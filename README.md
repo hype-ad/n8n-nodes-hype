@@ -59,14 +59,14 @@ npm test
 
 `npm test` builds the node and runs its tests. To build it without running the tests, use `npm run build`. The build puts the compiled node and its assets under `dist/`. `npm run dev` watches TypeScript files; it does not start n8n.
 
-To load the local build in an existing n8n installation:
+To load the local build with n8n 2.46.7 (requires Node.js 24 or later):
 
 ```sh
 npm run build
-N8N_CUSTOM_EXTENSIONS="$PWD/dist" n8n start
+N8N_CUSTOM_EXTENSIONS="$PWD/dist" npx --yes n8n@2.46.7 start
 ```
 
-Run n8n with a Node.js version supported by that n8n installation. Open the local editor, add the Hype node, and execute the action. Restart n8n after rebuilding the node.
+The `npx` command downloads and starts n8n without a global installation. Open the local editor, add the Hype node, and execute the action. Restart n8n after rebuilding the node.
 
 ## Version history
 
