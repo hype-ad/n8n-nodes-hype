@@ -11,7 +11,7 @@ export class Hype implements INodeType {
 		icon: 'file:hype.svg',
 		group: ['transform'],
 		version: 1,
-		description: 'Get YouTube gaming trends from Hype',
+		description: 'Get the top 10 trending topics on YouTube',
 		defaults: {
 			name: 'Hype',
 		},

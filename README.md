@@ -51,7 +51,7 @@ To try the node with an existing local n8n installation:
 
 ```sh
 npm run build
-N8N_CUSTOM_EXTENSIONS="$PWD/dist/nodes" n8n start
+N8N_CUSTOM_EXTENSIONS="$PWD/dist" n8n start
 ```
 
 Run that command from this project directory using a Node.js version supported by your installed n8n. Open the editor address printed by n8n, add Hype, and execute the Gaming action. Restart n8n after rebuilding changes.
