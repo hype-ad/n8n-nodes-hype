@@ -15,18 +15,32 @@ const properties: INodeProperties[] = [
 				routing: {
 					request: {
 						method: 'POST',
-						url: '/api/Trends/top10/public',
-						body: {
-							days: 30,
-							channelSet: 'Top 100',
-							category: 'Gaming',
-							scoring: 'Revenue',
-						},
+						url: '/api/n8n/top10/gaming',
 					},
 				},
 			},
 		],
 		default: 'top10_youtube_gaming_trends',
+	},
+	{
+		displayName: 'Email',
+		name: 'email',
+		type: 'string',
+		default: '',
+		description: 'Optional email address to include with the request.',
+		hint: 'Share your email if you would like to get the latest updates about the n8n-Hype integration.',
+		displayOptions: {
+			show: {
+				operation: ['top10_youtube_gaming_trends'],
+			},
+		},
+		routing: {
+			request: {
+				body: {
+					email: '={{$value}}',
+				},
+			},
+		},
 	},
 ];
 

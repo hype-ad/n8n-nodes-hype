@@ -21,7 +21,7 @@ export class Hype implements INodeType {
 		requestDefaults: {
 			baseURL: API_BASE_URL,
 			headers: {
-				Accept: 'text/plain',
+				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},
 		},
