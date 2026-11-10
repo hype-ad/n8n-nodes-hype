@@ -25,6 +25,8 @@ Content-Type: application/json
 
 It returns the complete JSON response as one n8n output item. It does not rename fields, validate trend scores, or split the response. Trends are in `$json.data`; the API may return fewer than ten. An empty result remains `data: []`. API status and message fields remain in the output. HTTP and network failures follow n8n's **Continue On Fail** setting.
 
+The node uses n8n's declarative request routing: the base URL, headers, POST path, and fixed body are defined in its node description. It has no custom execution method.
+
 Use n8n's **Split Out** node on `data` if you want one item per trend. The Hype node also supports AI Agent tool connections.
 
 Import [the example workflow](examples/top10-youtube-gaming-trends.json) to try **Manual Trigger → Hype → Edit Fields**.
