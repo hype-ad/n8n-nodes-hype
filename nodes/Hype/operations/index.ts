@@ -1,4 +1,25 @@
-import type { INodeProperties } from 'n8n-workflow';
+import type {
+	IDataObject,
+	IExecuteSingleFunctions,
+	IHttpRequestOptions,
+	INodeProperties,
+} from 'n8n-workflow';
+
+async function addN8nIdentifiers(
+	this: IExecuteSingleFunctions,
+	requestOptions: IHttpRequestOptions,
+): Promise<IHttpRequestOptions> {
+	const body = requestOptions.body as IDataObject | undefined;
+	const workflowId = this.getWorkflow().id;
+
+	requestOptions.body = {
+		...(body && typeof body === 'object' ? body : {}),
+		instanceId: this.getInstanceId(),
+		...(workflowId ? { workflowId } : {}),
+	};
+
+	return requestOptions;
+}
 
 const properties: INodeProperties[] = [
 	{
@@ -16,6 +37,9 @@ const properties: INodeProperties[] = [
 					request: {
 						method: 'POST',
 						url: '/api/n8n/top10/gaming',
+					},
+					send: {
+						preSend: [addN8nIdentifiers],
 					},
 				},
 			},
