@@ -51,7 +51,8 @@ const properties: INodeProperties[] = [
 		name: 'email',
 		type: 'string',
 		default: '',
-		description: 'Optional email address to include with the request.',
+			placeholder: 'name@email.com',
+			description: 'Optional email address to include with the request',
 		hint: 'Share your email if you would like to get the latest updates about the n8n-Hype integration.',
 		displayOptions: {
 			show: {

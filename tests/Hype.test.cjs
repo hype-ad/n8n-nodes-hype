@@ -46,12 +46,12 @@ test('declares the n8n API request and optional email in declarative routing', (
 			'Content-Type': 'application/json',
 		},
 	});
-	assert.deepEqual(description.properties[0].options[0].routing, {
-		request: {
-			method: 'POST',
-			url: '/api/n8n/top10/gaming',
-		},
+	assert.deepEqual(description.properties[0].options[0].routing.request, {
+		method: 'POST',
+		url: '/api/n8n/top10/gaming',
 	});
+	assert.equal(description.properties[0].options[0].routing.send.preSend.length, 1);
+	assert.equal(typeof description.properties[0].options[0].routing.send.preSend[0], 'function');
 	assert.deepEqual(description.properties[1].routing, {
 		request: {
 			body: {
