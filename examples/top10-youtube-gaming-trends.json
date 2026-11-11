@@ -27,23 +27,13 @@
     },
     {
       "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "trends",
-              "name": "trends",
-              "value": "={{ $json.data }}",
-              "type": "array"
-            }
-          ]
-        },
-        "includeOtherFields": true,
+        "fieldToSplitOut": "data",
         "options": {}
       },
-      "id": "edit-fields",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "id": "split-out",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1.1,
       "position": [
         480,
         0
@@ -66,7 +56,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Split Out",
             "type": "main",
             "index": 0
           }
