@@ -1,0 +1,76 @@
+{
+	"name": "@hype-ad/n8n-nodes-hype",
+	"version": "0.1.0",
+	"description": "A n8n node for Hype API",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"hype",
+		"youtube",
+		"youtube trends",
+		"trending topics",
+		"top 10",
+		"gaming",
+		"gaming trends",
+		"content ideas",
+		"video trends",
+		"trend research"
+	],
+	"license": "MIT",
+	"homepage": "https://hype.ad",
+	"author": {
+		"name": "Hype",
+		"email": "support-team@hype.ad",
+		"url": "https://hype.ad"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hype-ad/n8n-nodes-hype.git"
+	},
+	"engines": {
+		"node": ">=18.10"
+	},
+	"scripts": {
+		"build": "gulp clean && tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier nodes tests package.json tsconfig.json .eslintrc.js gulpfile.js --write",
+		"lint": "eslint nodes package.json",
+		"lint:fix": "eslint nodes package.json --fix",
+		"test": "npm run build && node --test tests/*.test.cjs",
+		"prepublishOnly": "npm run lint && npm test"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [],
+		"nodes": [
+			"dist/nodes/Hype/Hype.node.js"
+		]
+	},
+	"devDependencies": {
+		"@types/node": "18.19.76",
+		"@typescript-eslint/parser": "^8.72.2",
+		"eslint": "8.57.1",
+		"eslint-plugin-n8n-nodes-base": "1.15.0",
+		"gulp": "^5.0.1",
+		"n8n-workflow": "1.50.0",
+		"prettier": "3.5.2",
+		"typescript": "5.3.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	},
+	"peerDependenciesMeta": {
+		"n8n-workflow": {
+			"optional": true
+		}
+	},
+	"overrides": {
+		"axios": "1.21.1",
+		"form-data": "4.0.6",
+    "lodash": "4.18.1",
+    "minimatch@^10.2.2": "11.0.1"
+	}
+}

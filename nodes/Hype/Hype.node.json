@@ -1,0 +1,17 @@
+{
+	"node": "@hype-ad/n8n-nodes-hype.hype",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing", "Analytics"],
+	"resources": {
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/hype-ad/n8n-nodes-hype#readme"
+			},
+			{
+				"url": "https://hype.ad"
+			}
+		]
+	},
+	"alias": ["hype", "youtube trends", "trending topics", "top 10", "gaming trends"]
+}
