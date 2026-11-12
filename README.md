@@ -56,13 +56,6 @@ npm ci
 npm run check
 ```
 
-If you use nvm, run `nvm use` first. `npm run check` runs lint, the build and tests, a runtime-dependency audit, and a package dry-run.
-
-The package has no runtime dependencies; n8n supplies `n8n-workflow`. A full `npm audit` also checks development tools and currently reports upstream Zod and minimatch advisories in n8n's dependency tree. The runtime audit does not cover those tools. Keep the full audit visible and update the tools when compatible fixes are released; `npm audit fix --force` currently proposes incompatible downgrades.
-
-The `allowScripts` policy explicitly blocks native builds for `cpu-features`, `isolated-vm`, and `ssh2`. They are transitive development dependencies; this node's build, tests, and declarative HTTP request do not use their native features.
-
-`npm test` builds the node and runs its tests. To build it without running the tests, use `npm run build`. The build puts the compiled node and its assets under `dist/`. `npm run dev` watches TypeScript files; it does not start n8n.
 
 To load the local build with n8n 2.46.7 (requires Node.js 24 or later):
 

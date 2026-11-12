@@ -1,6 +1,6 @@
 {
 	"name": "@hype-ad/n8n-nodes-hype",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A n8n node for Hype API",
 	"keywords": [
 		"n8n-community-node-package",
