@@ -1,4 +1,5 @@
 import type { INodeType, INodeTypeDescription } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'n8n-workflow';
 
 import { API_BASE_URL } from './constants';
 import { PROPERTIES } from './operations';
@@ -15,8 +16,8 @@ export class Hype implements INodeType {
 		defaults: {
 			name: 'Hype',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		usableAsTool: true,
 		requestDefaults: {
 			baseURL: API_BASE_URL,

@@ -33,10 +33,12 @@
 	"scripts": {
 		"build": "gulp clean && tsc && gulp build:icons",
 		"dev": "tsc --watch",
-		"format": "prettier nodes tests package.json tsconfig.json .eslintrc.js gulpfile.js --write",
+		"format": "prettier nodes tests package.json tsconfig.json eslint.config.mjs gulpfile.js --write",
 		"lint": "eslint nodes package.json",
 		"lint:fix": "eslint nodes package.json --fix",
 		"test": "npm run build && node --test tests/*.test.cjs",
+		"audit:runtime": "npm audit --omit=dev",
+		"check": "npm run lint && npm test && npm run audit:runtime && npm pack --dry-run",
 		"prepublishOnly": "npm run lint && npm test"
 	},
 	"files": [
@@ -50,12 +52,12 @@
 		]
 	},
 	"devDependencies": {
+		"@n8n/eslint-plugin-community-nodes": "0.40.0",
 		"@types/node": "18.19.76",
 		"@typescript-eslint/parser": "^8.72.2",
-		"eslint": "8.57.1",
-		"eslint-plugin-n8n-nodes-base": "1.15.0",
+		"eslint": "9.29.0",
 		"gulp": "^5.0.1",
-		"n8n-workflow": "1.50.0",
+		"n8n-workflow": "2.47.1",
 		"prettier": "3.5.2",
 		"typescript": "5.3.3"
 	},
@@ -67,10 +69,9 @@
 			"optional": true
 		}
 	},
-	"overrides": {
-		"axios": "1.21.1",
-		"form-data": "4.0.6",
-    "lodash": "4.18.1",
-    "minimatch@^10.2.2": "11.0.1"
+	"allowScripts": {
+		"cpu-features": false,
+		"isolated-vm": false,
+		"ssh2": false
 	}
 }
