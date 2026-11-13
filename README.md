@@ -49,15 +49,13 @@ You can import [the example workflow](examples/top10-youtube-gaming-trends.json)
 
 ## Development
 
-Run these commands from the project directory:
+Use Node.js 24 or later for development, matching CI. Run these commands from the project directory:
 
 ```sh
 npm ci
-npm run lint
-npm test
+npm run check
 ```
 
-`npm test` builds the node and runs its tests. To build it without running the tests, use `npm run build`. The build puts the compiled node and its assets under `dist/`. `npm run dev` watches TypeScript files; it does not start n8n.
 
 To load the local build with n8n 2.46.7 (requires Node.js 24 or later):
 
