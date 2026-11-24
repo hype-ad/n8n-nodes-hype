@@ -11,7 +11,6 @@ This is an n8n community node for [Hype](https://hype.ad). Discover **Top 10 You
 - [Usage](#usage)
 - [Resources](#resources)
 - [Development](#development)
-- [Version history](#version-history)
 
 ## Installation
 
@@ -32,6 +31,10 @@ After installation, restart your n8n instance for the Hype node to appear.
 ### Top 10 YouTube Gaming Trends
 
 Get trends from the last 30 days without an API key or credentials.
+
+| Field | Description |
+| --- | --- |
+| **Email(optional)** | Share your email address if you would like to receive updates about the n8n-Hype integration. Leave the field blank if you prefer not to share an email address. You will get the same trends either way. |
 
 ## Usage
 
@@ -65,9 +68,3 @@ N8N_CUSTOM_EXTENSIONS="$PWD/dist" npx --yes n8n@2.46.7 start
 ```
 
 The `npx` command downloads and starts n8n without a global installation. Open the local editor, add the Hype node, and execute the action. Restart n8n after rebuilding the node.
-
-## Version history
-
-### 0.1.0
-
-- Add the Top 10 YouTube Gaming Trends action.

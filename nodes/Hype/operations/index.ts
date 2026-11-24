@@ -1,25 +1,4 @@
-import type {
-	IDataObject,
-	IExecuteSingleFunctions,
-	IHttpRequestOptions,
-	INodeProperties,
-} from 'n8n-workflow';
-
-async function addN8nIdentifiers(
-	this: IExecuteSingleFunctions,
-	requestOptions: IHttpRequestOptions,
-): Promise<IHttpRequestOptions> {
-	const body = requestOptions.body as IDataObject | undefined;
-	const workflowId = this.getWorkflow().id;
-
-	requestOptions.body = {
-		...(body && typeof body === 'object' ? body : {}),
-		instanceId: this.getInstanceId(),
-		...(workflowId ? { workflowId } : {}),
-	};
-
-	return requestOptions;
-}
+import type { INodeProperties } from 'n8n-workflow';
 
 const properties: INodeProperties[] = [
 	{
@@ -38,9 +17,6 @@ const properties: INodeProperties[] = [
 						method: 'POST',
 						url: '/api/n8n/top10/gaming',
 					},
-					send: {
-						preSend: [addN8nIdentifiers],
-					},
 				},
 			},
 		],
@@ -51,8 +27,9 @@ const properties: INodeProperties[] = [
 		name: 'email',
 		type: 'string',
 		default: '',
-			placeholder: 'name@email.com',
-			description: 'Optional email address to include with the request',
+		placeholder: 'name@email.com',
+		description:
+			'Optional email address sent to Hype to receive updates about the n8n-Hype integration. Leave blank to get trends without sharing an email address.',
 		hint: 'Share your email if you would like to get the latest updates about the n8n-Hype integration.',
 		displayOptions: {
 			show: {
