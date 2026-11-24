@@ -37,22 +37,22 @@ test('keeps the example workflow pointed at node version 1', () => {
 	assert.equal(hypeNode.typeVersion, 1);
 });
 
-test('declares the n8n API request and optional email in declarative routing', () => {
+test('routes requests to Hype with only the optional email and no identifier hooks', () => {
 	const description = new Hype().description;
 
 	assert.deepEqual(description.requestDefaults, {
-		baseURL: 'https://hype-ad-backend-prod-hfapdhcecffyfhev.spaincentral-01.azurewebsites.net',
+		baseURL: 'https://n8n.hype.ad',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json',
 		},
 	});
-	assert.deepEqual(description.properties[0].options[0].routing.request, {
-		method: 'POST',
-		url: '/api/n8n/top10/gaming',
+	assert.deepEqual(description.properties[0].options[0].routing, {
+		request: {
+			method: 'POST',
+			url: '/api/n8n/top10/gaming',
+		},
 	});
-	assert.equal(description.properties[0].options[0].routing.send.preSend.length, 1);
-	assert.equal(typeof description.properties[0].options[0].routing.send.preSend[0], 'function');
 	assert.deepEqual(description.properties[1].routing, {
 		request: {
 			body: {
@@ -60,39 +60,4 @@ test('declares the n8n API request and optional email in declarative routing', (
 			},
 		},
 	});
-});
-
-test('preserves the email and request options when adding n8n identifiers', async () => {
-	const description = new Hype().description;
-	const prepareRequest = description.properties[0].options[0].routing.send.preSend[0];
-	const request = {
-		method: 'POST',
-		url: '/api/n8n/top10/gaming',
-		headers: { Accept: 'application/json' },
-		body: { email: 'reader@example.com' },
-	};
-	const result = await prepareRequest.call(
-		{ getInstanceId: () => 'test-instance', getWorkflow: () => ({ id: 'test-workflow' }) },
-		request,
-	);
-
-	assert.equal(result.method, 'POST');
-	assert.equal(result.url, '/api/n8n/top10/gaming');
-	assert.deepEqual(result.headers, { Accept: 'application/json' });
-	assert.deepEqual(result.body, {
-		email: 'reader@example.com',
-		instanceId: 'test-instance',
-		workflowId: 'test-workflow',
-	});
-});
-
-test('prepares a request without an email or saved workflow ID', async () => {
-	const description = new Hype().description;
-	const prepareRequest = description.properties[0].options[0].routing.send.preSend[0];
-	const result = await prepareRequest.call(
-		{ getInstanceId: () => 'test-instance', getWorkflow: () => ({}) },
-		{ method: 'POST', url: '/api/n8n/top10/gaming' },
-	);
-
-	assert.deepEqual(result.body, { instanceId: 'test-instance' });
 });
